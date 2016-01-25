@@ -10,10 +10,10 @@
       </h1>
     </header>
 
-    <div class="towers row well"></div><!-- towers -->
+    <div class="towers row well"><%= erb :'tower', :locals => {:tower => tower} %></div><!-- towers -->
 
       <div class="form row">
-        <div class="col-xs-6 col-xs-offset-3"></div>
+        <div class="col-xs-6 col-xs-offset-3"><%= erb :'form' %></div>
       </div><!-- form -->
 
   </div>
