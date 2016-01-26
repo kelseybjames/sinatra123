@@ -22,9 +22,10 @@ end
 post '/' do
   gamestate = load_session
   tower = TowerOfHanoi.new(gamestate)
-  tower.move(params[:from], params[:to])
+  if tower.valid_move?(params[:from].to_i, params[:to].to_i)
+    tower.move(params[:from].to_i, params[:to].to_i)
+  end
   set_session(tower)
-  tower = load_session
 
   erb :game, :locals => {:tower => tower}
 end
