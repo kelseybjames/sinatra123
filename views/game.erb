@@ -8,14 +8,18 @@
           Tower Of Hanoi
         </a>
       </h1>
+      <% if tower.win? %>
+        <h3>You win</h3>
+      <% end %>
+      <% unless error.nil? %>
+        <h3><%= error %></h3>
+      <% end %>
     </header>
 
     <div class="towers row well"><%= erb :'tower', :locals => {:tower => tower} %></div><!-- towers -->
-
       <div class="form row">
         <div class="col-xs-6 col-xs-offset-3"><%= erb :'form' %></div>
       </div><!-- form -->
 
   </div>
 </div><!-- game -->
-

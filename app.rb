@@ -14,18 +14,21 @@ helpers do
 end  
 
 get '/' do
+  error = nil
   tower = TowerOfHanoi.new
   set_session(tower)
-  erb :game, :locals => {:tower => tower}
+  erb :game, :locals => {:tower => tower, :error => error}
 end
 
 post '/' do
+  error = "Invalid move"
   gamestate = load_session
   tower = TowerOfHanoi.new(gamestate)
   if tower.valid_move?(params[:from].to_i, params[:to].to_i)
     tower.move(params[:from].to_i, params[:to].to_i)
+    error = nil
   end
   set_session(tower)
 
-  erb :game, :locals => {:tower => tower}
+  erb :game, :locals => {:tower => tower, :error => error}
 end
